@@ -1,0 +1,9 @@
+{
+  "expo": {
+    "name": "currency_converter",
+    "description": "A Currency Converter based on https://learn.handlebarlabs.com/",
+    "sdkVersion": "26.0.0",
+    "orientation": "portrait",
+    "privacy": "public"
+  }
+}
