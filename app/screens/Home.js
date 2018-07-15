@@ -45,7 +45,8 @@ class Home extends Component {
   }
 
   handleNetworkChange = (info) => {
-    this.props.dispatch(changeNetworkStatus(info.type))
+    this.props.dispatch(changeNetworkStatus(info.type));
+    this.props.dispatch(getInitialConversion());
   }
 
   handlPressBaseCurrency = () => {

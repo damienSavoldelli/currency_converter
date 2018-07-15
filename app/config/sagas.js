@@ -1,4 +1,5 @@
 import { takeEvery, select, call, put } from 'redux-saga/effects';
+import { delay } from 'redux-saga';
 
 // 1. Swap currency
 // 2. Change base currency
@@ -8,6 +9,17 @@ import { SWAP_CURRENCY, CHANGE_BASE_CURRENCY, GET_INITIAL_CONVERSION, CONVERSION
 const getLatestRate = currency => fetch(`https://fixer.handlebarlabs.com/latest?base=${currency}`);
 
 function* fetchLatestConversionRate(action) {
+
+  const { connected, hasCheckedStatus } = yield select(state => state.network);
+  yield put({ type: CONVERSION_ERROR, error:null });
+  if (connected && hasCheckedStatus) {
+    yield put({
+      type: CONVERSION_ERROR,
+      error: 'Not connected to the internet. conversion reate may be outdated or unvailable'
+    });
+    return;
+  }
+
   try {
     let currency = action.currency;
 
@@ -28,9 +40,16 @@ function* fetchLatestConversionRate(action) {
     if (process.env.NODE_ENV == 'development')
       console.log('Saga error', e);    
   }
-  
+};
 
+const clearConversionError = function* () {
+  const DELAY_SECONDS = 4;
+  const error = yield select(state => state.currencies.error);
 
+  if (error) {
+    yield delay(DELAY_SECONDS * 1000);
+    yield push({ type: CONVERSION_ERROR, error:null });
+  }
 };
 
 export default function* rootSaga() {
