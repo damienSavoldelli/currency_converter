@@ -12,7 +12,7 @@ const initialState = {
   hasCheckedStatus: false,
 }
 
-export  default (state = initialState, action) => {
+export default (state = initialState, action) => {
 
   switch (action.type) {
     case CHANGE_CONNECTION_STATUS:

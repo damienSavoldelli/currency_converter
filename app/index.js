@@ -3,11 +3,14 @@ import EStyleSheet from 'react-native-extended-stylesheet';
 
 import { Provider } from 'react-redux';
 
+import { PersistGate } from 'redux-persist/es/integration/react';
+
 import './reducers';
 
 import Navigator from './config/routes';
 import { AlertProvider } from './components/Alert';
-import store from './config/store';
+
+import configureStore from './config/store';
 
 EStyleSheet.build({
   $primaryBlue : '#4F6D7A',
@@ -27,10 +30,28 @@ EStyleSheet.build({
 
 // console.disableYellowBox = true;
 
-export default () => (
-  <Provider store={store}>
-    <AlertProvider>
-      <Navigator onNavigationStateChange={null} />
-    </AlertProvider>
-  </Provider>
-);
+export default class extends React.Component {
+  constructor(props) {
+    super(props);
+
+    const { store, persistor } = configureStore();
+
+    this.state = {
+      store,
+      persistor,
+    }
+  }
+
+  render() {
+    return (
+      <Provider store={this.state.store}>
+        <PersistGate persistor={this.state.persistor}>
+          <AlertProvider>
+            <Navigator onNavigationStateChange={null} />
+          </AlertProvider>
+        </PersistGate>      
+      </Provider>
+    );
+  }
+}
+
