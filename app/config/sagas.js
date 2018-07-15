@@ -6,7 +6,18 @@ import { delay } from 'redux-saga';
 // 3 intial state currency
 import { SWAP_CURRENCY, CHANGE_BASE_CURRENCY, GET_INITIAL_CONVERSION, CONVERSION_RESULT, CONVERSION_ERROR } from '../actions/currencies';
 
-const getLatestRate = currency => fetch(`https://fixer.handlebarlabs.com/latest?base=${currency}`);
+
+const requestTimeout = (time,promise) =>
+  new Promise((resolve, reject) => {
+    setTimeout(
+      () => reject(new Error('Request has time out - you have a slow internet connexion')),
+      time
+    );
+    promise.then(resolve, reject);
+  })
+
+const getLatestRate = currency => 
+  requestTimeout(2000, fetch(`https://fixer.handlebarlabs.com/latest?base=${currency}`));
 
 function* fetchLatestConversionRate(action) {
 
