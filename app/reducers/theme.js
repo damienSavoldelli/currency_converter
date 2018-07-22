@@ -10,7 +10,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         primaryColor: action.color,
-      }
+      };
     default:
       return state;
   }

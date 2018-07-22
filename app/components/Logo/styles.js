@@ -7,8 +7,8 @@ const imageWidth = Dimensions.get('window').width / 2;
 export default EStyleSheet.create({
   $largeContainerSize: imageWidth,
   $largeImageSize: imageWidth / 2,
-  $smallContainerSize : imageWidth / 2,
-  $smallImageSize : imageWidth / 4,
+  $smallContainerSize: imageWidth / 2,
+  $smallImageSize: imageWidth / 4,
 
   container: {
     alignItems: 'center',
@@ -33,6 +33,6 @@ export default EStyleSheet.create({
     fontSize: 28,
     letterSpacing: -0.5,
     marginTop: 15,
-    color: "$white",
+    color: '$white',
   },
 });

@@ -12,7 +12,7 @@ const HomeStack = StackNavigator(
       screen: Home,
       navigationOptions: {
         header: () => null,
-      }
+      },
     },
     Options: {
       screen: Options,

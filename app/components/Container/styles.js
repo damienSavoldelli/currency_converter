@@ -6,5 +6,5 @@ export default EStyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '$primaryBlue',
-  }
+  },
 });

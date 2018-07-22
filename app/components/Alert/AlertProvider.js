@@ -4,10 +4,10 @@ import { View } from 'react-native';
 import DropdownAlert from 'react-native-dropdownalert';
 
 class AlertProvider extends Component {
-  static get childContextTypes() {
+  getChildContext() {
     return {
-    alertWithType: PropTypes.func,
-    alert: PropTypes.func,
+      alert: (...args) => this.dropdown.alert(...args),
+      alertWithType: (...args) => this.dropdown.alertWithType(...args),
     };
   }
 
@@ -17,10 +17,10 @@ class AlertProvider extends Component {
     };
   }
 
-  getChildContext() {
+  static get childContextTypes() {
     return {
-      alert: (...args) => this.dropdown.alert(...args),
-      alertWithType: (...args) => this.dropdown.alertWithType(...args),
+      alertWithType: PropTypes.func,
+      alert: PropTypes.func,
     };
   }
 

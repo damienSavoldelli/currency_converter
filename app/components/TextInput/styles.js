@@ -14,7 +14,7 @@ export default EStyleSheet.create({
     width: '90%',
     height: INPUT_HEIGHT,
     borderRadius: BORDER_RADIUS,
-    flexDirection : 'row',
+    flexDirection: 'row',
     alignItems: 'center',
     marginVertical: 11,
   },
@@ -25,7 +25,7 @@ export default EStyleSheet.create({
     height: INPUT_HEIGHT,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: "$white",
+    backgroundColor: '$white',
     borderTopLeftRadius: BORDER_RADIUS,
     borderBottomLeftRadius: BORDER_RADIUS,
 
@@ -34,7 +34,7 @@ export default EStyleSheet.create({
     fontWeight: '600',
     fontSize: 20,
     paddingHorizontal: 16,
-    color: "$primaryBlue",
+    color: '$primaryBlue',
   },
   input: {
     height: INPUT_HEIGHT,

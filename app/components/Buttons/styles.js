@@ -14,7 +14,7 @@ export default EStyleSheet.create({
     marginRight: 11,
   },
   text: {
-    color:'$white',
+    color: '$white',
     fontSize: 14,
     fontWeight: '300',
     paddingVertical: 20,

@@ -37,5 +37,5 @@ export default EStyleSheet.create({
   checkmark: {
     width: 20,
     height: 20,
-  }
+  },
 });

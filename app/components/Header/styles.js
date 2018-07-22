@@ -17,5 +17,5 @@ export default EStyleSheet.create({
   },
   icon: {
     width: 18,
-  }
+  },
 });
